@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 @Entity
 public class Detalle implements Serializable {
-	private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long num_detalle;
@@ -63,11 +62,6 @@ public int getPrecio() {
 public void setPrecio(int precio) {
 	this.precio = precio;
 }
-
-public static long getSerialversionuid() {
-	return serialVersionUID;
-}
-
 
 
 

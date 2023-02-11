@@ -3,6 +3,7 @@ package com.ejercicio.ventas.servicios;
 import java.util.List;
 
 import com.ejercicio.ventas.modelos.Cliente;
+import com.ejercicio.ventas.modelos.Factura;
 
 public interface IClienteServicio {
 	

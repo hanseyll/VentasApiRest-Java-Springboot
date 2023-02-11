@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ejercicio.ventas.modelos.Factura;
+import com.ejercicio.ventas.repositorios.ClienteRepositorio;
 import com.ejercicio.ventas.repositorios.FacturaRepositorio;
 
 @Service
@@ -13,6 +14,8 @@ public class FacturaServicioImplementacion implements IFacturaServicio {
 
 	@Autowired
 	FacturaRepositorio facturarepositorio;
+	@Autowired
+	ClienteRepositorio clienterepositorio;
 	
 	@Override
 	public List<Factura> obtenerTodo() {

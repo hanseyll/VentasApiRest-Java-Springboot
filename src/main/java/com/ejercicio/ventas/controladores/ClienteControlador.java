@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ejercicio.ventas.modelos.Cliente;
+import com.ejercicio.ventas.modelos.Factura;
 import com.ejercicio.ventas.servicios.ClienteServicioImplementacion;
+import com.ejercicio.ventas.servicios.FacturaServicioImplementacion;
 
 @RestController
 @RequestMapping("/api/v1")
