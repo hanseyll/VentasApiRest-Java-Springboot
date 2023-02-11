@@ -5,7 +5,9 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-public class Producto  {
+public class Producto implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_producto;
@@ -51,6 +53,11 @@ public class Producto  {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	

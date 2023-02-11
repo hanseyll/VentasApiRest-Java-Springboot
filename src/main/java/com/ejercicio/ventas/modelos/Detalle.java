@@ -6,12 +6,16 @@ import jakarta.persistence.*;
 
 @Entity
 public class Detalle implements Serializable {
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long num_detalle;
-private Long id_factura;
-private Long id_producto;
+@ManyToOne
+@JoinColumn(name="num_factura")
+private Factura num_factura;
+@ManyToOne
+@JoinColumn(name="id_producto")
+private Producto id_producto;
 private int cantidad;
 private int precio;
 
@@ -27,19 +31,20 @@ public void setNum_detalle(Long num_detalle) {
 	this.num_detalle = num_detalle;
 }
 
-public Long getId_factura() {
-	return id_factura;
+
+public Factura getNum_factura() {
+	return num_factura;
 }
 
-public void setId_factura(Long id_factura) {
-	this.id_factura = id_factura;
+public void setNum_factura(Factura num_factura) {
+	this.num_factura = num_factura;
 }
 
-public Long getId_producto() {
+public Producto getId_producto() {
 	return id_producto;
 }
 
-public void setId_producto(Long id_producto) {
+public void setId_producto(Producto id_producto) {
 	this.id_producto = id_producto;
 }
 
