@@ -28,7 +28,7 @@ public class ClienteControlador {
 	public List<Cliente> obtenerClientes(){
 		return clienteservicio.obtenerTodo();
 	}
-	@PostMapping("/guardar")
+	@PostMapping("/guardarClientes")
 	public ResponseEntity<Cliente> guardarCliente(@RequestBody Cliente cliente){
 		Cliente nuevo_cliente = clienteservicio.guardar(cliente);
 		return new ResponseEntity<>(nuevo_cliente,HttpStatus.CREATED);

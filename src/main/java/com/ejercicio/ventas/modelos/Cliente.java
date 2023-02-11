@@ -5,9 +5,9 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-public class Cliente implements Serializable {
+public class Cliente {
 	
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
@@ -78,9 +78,7 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 
 	
 	

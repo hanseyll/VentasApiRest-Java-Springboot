@@ -5,13 +5,15 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-public class Factura implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Factura  {
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long num_factura;
-	private Long id_cliente;
+	@ManyToOne
+	@JoinColumn(name="id_cliente")
+	private Cliente id_cliente;
 	private String fecha;
 	
 	public Factura(){
@@ -26,11 +28,11 @@ public class Factura implements Serializable {
 		this.num_factura = num_factura;
 	}
 
-	public Long getId_cliente() {
+	public Cliente getId_cliente() {
 		return id_cliente;
 	}
 
-	public void setId_cliente(Long id_cliente) {
+	public void setId_cliente(Cliente id_cliente) {
 		this.id_cliente = id_cliente;
 	}
 
@@ -42,9 +44,7 @@ public class Factura implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 
 	
 	
