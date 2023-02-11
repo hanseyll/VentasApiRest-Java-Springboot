@@ -5,32 +5,36 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-public class Producto implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Producto  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_product;
-	private String name;
+	private Long id_producto;
+	
+	private String nombre;
 	private int precio;
 	private int stock;
 
 	public Producto(){
 	}
 
-	public Long getId_product() {
-		return id_product;
+
+	public Long getId_producto() {
+		return id_producto;
 	}
 
-	public void setId_product(Long id_product) {
-		this.id_product = id_product;
+
+	public void setId_producto(Long id_producto) {
+		this.id_producto = id_producto;
 	}
 
-	public String getName() {
-		return name;
+
+
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public int getPrecio() {
@@ -49,9 +53,7 @@ public class Producto implements Serializable {
 		this.stock = stock;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 
 	
 	
