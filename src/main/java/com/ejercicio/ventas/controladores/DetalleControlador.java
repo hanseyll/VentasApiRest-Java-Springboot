@@ -28,24 +28,24 @@ public class DetalleControlador {
 	DetalleServicioImplementacion detalleservicio;
 	
 	@GetMapping("/detalles")
-	public List<Detalle> obtenerDetalles(){
+	public List<Detalle> obtenerDetalles() throws Exception{
 		return detalleservicio.obtenerTodo();
 	}
 	
 	@PostMapping("/guardarDetalle")
-	public ResponseEntity<Detalle> guardarDetalle(@RequestBody Detalle detalle){
+	public ResponseEntity<Detalle> guardarDetalle(@RequestBody Detalle detalle) throws Exception{
 		Detalle nuevo_detalle = detalleservicio.guardar(detalle);
 		return new ResponseEntity<>(nuevo_detalle,HttpStatus.CREATED);
 		
 	}
 	
 	@GetMapping("/detalle/{id}")
-	public ResponseEntity<Detalle> obtenerPorId(@PathVariable long id){
+	public ResponseEntity<Detalle> obtenerPorId(@PathVariable long id) throws Exception{
 		Detalle detallePorId = detalleservicio.obtenerPorId(id);
 		return ResponseEntity.ok(detallePorId);
 	}
 	
-	@GetMapping("/searchDetalle")
+	@GetMapping("/detalleFacturaPorNumFactura")
 	public ResponseEntity<?> search(@RequestParam long id) throws Exception{
 		      List <Detalle> detallePorClienteId= detalleservicio.search(id);
 			return new ResponseEntity<>(detallePorClienteId,HttpStatus.FOUND);
@@ -53,7 +53,7 @@ public class DetalleControlador {
 	
 	
 	@PutMapping("/detalle/{id}")
-	public ResponseEntity<Detalle> actualizarPorId(@PathVariable long id, @RequestBody Detalle detalle){
+	public ResponseEntity<Detalle> actualizarPorId(@PathVariable long id, @RequestBody Detalle detalle) throws Exception{
 		Detalle detallePorId = detalleservicio.obtenerPorId(id);
 		detallePorId.setCantidad(detalle.getCantidad());
 		detallePorId.setPrecio(detalle.getPrecio());
@@ -63,7 +63,7 @@ public class DetalleControlador {
 	}
 	
 	@DeleteMapping("/detalle/{id}")
-	public ResponseEntity<HashMap<String,Boolean>> eliminarDetalle(@PathVariable long id){
+	public ResponseEntity<HashMap<String,Boolean>> eliminarDetalle(@PathVariable long id) throws Exception{
 		this.detalleservicio.eliminar(id);
 		
 		HashMap<String,Boolean> estadoDetalleEliminado = new HashMap<>();

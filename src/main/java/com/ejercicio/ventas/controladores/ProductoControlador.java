@@ -26,25 +26,25 @@ public class ProductoControlador {
 	ProductoServicioImplementacion productoservicio;
 	
 	@GetMapping("/productos")
-	public List<Producto> obtenerFacturas(){
+	public List<Producto> obtenerFacturas() throws Exception{
 		return productoservicio.obtenerTodo();
 	}
 	
 	@PostMapping("/guardarProducto")
-	public ResponseEntity<Producto> guardarProducto(@RequestBody Producto producto){
+	public ResponseEntity<Producto> guardarProducto(@RequestBody Producto producto) throws Exception{
 		Producto nuevo_producto = productoservicio.guardar(producto);
 		return new ResponseEntity<>(nuevo_producto,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/producto/{id}")
-	public ResponseEntity<Producto> obtenerProductoId(@PathVariable long id){
+	public ResponseEntity<Producto> obtenerProductoId(@PathVariable long id) throws Exception{
 		Producto clientePorId = productoservicio.obtenerPorId(id);
 		return ResponseEntity.ok(clientePorId);
 		
 	}
 	
 	@PutMapping("/producto/{id}")
-	public ResponseEntity<Producto> actualizar(@PathVariable long id,@RequestBody Producto producto){
+	public ResponseEntity<Producto> actualizar(@PathVariable long id,@RequestBody Producto producto) throws Exception{
 		Producto productoPorId = productoservicio.obtenerPorId(id);
 		productoPorId.setNombre(producto.getNombre());
 		productoPorId.setPrecio(producto.getPrecio());
@@ -55,7 +55,7 @@ public class ProductoControlador {
 		}
 	
 	@DeleteMapping("/producto/{id}")
-	public ResponseEntity<HashMap<String,Boolean>> eliminarProducto(@PathVariable long id){
+	public ResponseEntity<HashMap<String,Boolean>> eliminarProducto(@PathVariable long id) throws Exception{
 		this.productoservicio.eliminar(id);
 		
 		HashMap<String,Boolean> estadoProductoEliminado = new HashMap<>();

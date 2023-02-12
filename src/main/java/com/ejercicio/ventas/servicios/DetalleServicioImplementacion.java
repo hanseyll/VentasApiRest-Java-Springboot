@@ -10,29 +10,47 @@ import com.ejercicio.ventas.modelos.Factura;
 import com.ejercicio.ventas.repositorios.DetalleRepositorio;
 
 @Service
-public class DetalleServicioImplementacion implements IDetalleServicio{
-	
+public class DetalleServicioImplementacion implements IDetalleServicio {
+
 	@Autowired
 	DetalleRepositorio detallerepositorio;
 
 	@Override
-	public List<Detalle> obtenerTodo() {
-		return detallerepositorio.findAll();
+	public List<Detalle> obtenerTodo() throws Exception {
+		try {
+			return detallerepositorio.findAll();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+
 	}
 
 	@Override
-	public Detalle guardar(Detalle detalle) {
-		return detallerepositorio.save(detalle);
+	public Detalle guardar(Detalle detalle) throws Exception {
+		try {
+			return detallerepositorio.save(detalle);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@Override
-	public Detalle obtenerPorId(long id) {
-		return detallerepositorio.findById(id).orElse(null);
+	public Detalle obtenerPorId(long id) throws Exception {
+		try {
+			return detallerepositorio.findById(id).orElse(null);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@Override
-	public void eliminar(long id) {
-		detallerepositorio.deleteById(id);
+	public void eliminar(long id) throws Exception {
+
+		try {
+			detallerepositorio.deleteById(id);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@Override
@@ -40,7 +58,7 @@ public class DetalleServicioImplementacion implements IDetalleServicio{
 		try {
 			List<Detalle> detalles = detallerepositorio.searchNativo(id);
 			return detalles;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
 	}

@@ -27,22 +27,22 @@ public class FacturaControlador {
 	FacturaServicioImplementacion facturaservicio;
 	
 	@GetMapping("/facturas")
-	public List<Factura> obtenerFacturas(){
+	public List<Factura> obtenerFacturas() throws Exception{
 		return facturaservicio.obtenerTodo();
 	}
 	@PostMapping("/guardarFactura")
-	public ResponseEntity<Factura> guardarFactura(@RequestBody Factura factura){
+	public ResponseEntity<Factura> guardarFactura(@RequestBody Factura factura) throws Exception{
 		Factura nueva_factura = facturaservicio.guardar(factura);
 		return new ResponseEntity<>(nueva_factura,HttpStatus.CREATED);
 	}
 	@GetMapping("/factura/{id}")
-	public ResponseEntity<Factura> obtenerFacturaId(@PathVariable long id){
+	public ResponseEntity<Factura> obtenerFacturaId(@PathVariable long id) throws Exception{
 		Factura facturaPorId= facturaservicio.obtenerPorId(id);
 		System.out.print(facturaPorId);
 		return ResponseEntity.ok(facturaPorId);
 	}
 	
-	@GetMapping("/search")
+	@GetMapping("/facturaPorClienteId")
 	public ResponseEntity<?> search(@RequestParam long id) throws Exception{
 		System.out.println("empieza");
 		       System.out.println(facturaservicio.search(id));
@@ -52,7 +52,7 @@ public class FacturaControlador {
 	}
 	
 	@PutMapping("/factura/{id}")
-	public ResponseEntity<Factura> actualizar(@PathVariable long id, @RequestBody Factura factura){
+	public ResponseEntity<Factura> actualizar(@PathVariable long id, @RequestBody Factura factura) throws Exception{
 		Factura facturaPorId = facturaservicio.obtenerPorId(id);
 		facturaPorId.setFecha(factura.getFecha());
 		
@@ -60,7 +60,7 @@ public class FacturaControlador {
 		return new ResponseEntity<>(factura_actualizada, HttpStatus.CREATED);
 	}
 	@DeleteMapping("/factura/{id}")
-	public ResponseEntity <HashMap<String, Boolean>>eliminarFactura(@PathVariable long id){
+	public ResponseEntity <HashMap<String, Boolean>>eliminarFactura(@PathVariable long id) throws Exception{
 	this.facturaservicio.eliminar(id);
 	
 	HashMap<String,Boolean> estadoFacturaEliminada = new HashMap<>();

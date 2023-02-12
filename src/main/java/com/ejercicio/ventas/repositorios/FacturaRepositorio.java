@@ -10,11 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ejercicio.ventas.modelos.Factura;
 
 @Repository
-public interface FacturaRepositorio extends JpaRepository<Factura,Long> {
-
-@Query(
-	value= "SELECT * FROM factura WHERE factura.id_cliente LIKE %:id%",
-	nativeQuery = true
-		)
-List<Factura> searchNativo(@Param("id") long id);
+public interface FacturaRepositorio extends JpaRepository<Factura, Long> {
+	@Query(value = "SELECT * FROM factura WHERE factura.id_cliente LIKE %:id%", nativeQuery = true)
+	List<Factura> searchNativo(@Param("id") long id);
 }

@@ -5,20 +5,25 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-public class Cliente implements Serializable{
-	private static final long serialVersionUID = 1L;
+public class Cliente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_cliente;
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "apellido")
 	private String apellido;
+	@Column(name = "direccion")
 	private String direccion;
+	@Column(name = "fecha_nacimiento")
 	private String fecha_nacimiento;
+	@Column(name = "telefono")
 	private String telefono;
+	@Column(name = "email")
 	private String email;
-	
+
 	public Cliente() {
-		
+
 	}
 
 	public Long getId_cliente() {
@@ -77,9 +82,4 @@ public class Cliente implements Serializable{
 		this.email = email;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
 }

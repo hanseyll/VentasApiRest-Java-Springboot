@@ -27,21 +27,21 @@ public class ClienteControlador {
 	ClienteServicioImplementacion clienteservicio;
 	
 	@GetMapping("/clientes")
-	public List<Cliente> obtenerClientes(){
+	public List<Cliente> obtenerClientes() throws Exception{
 		return clienteservicio.obtenerTodo();
 	}
 	@PostMapping("/guardarClientes")
-	public ResponseEntity<Cliente> guardarCliente(@RequestBody Cliente cliente){
+	public ResponseEntity<Cliente> guardarCliente(@RequestBody Cliente cliente) throws Exception{
 		Cliente nuevo_cliente = clienteservicio.guardar(cliente);
 		return new ResponseEntity<>(nuevo_cliente,HttpStatus.CREATED);
 	}
 	@GetMapping("/cliente/{id}")
-	public ResponseEntity<Cliente> obtenerClienteId(@PathVariable long id){
+	public ResponseEntity<Cliente> obtenerClienteId(@PathVariable long id) throws Exception{
 		Cliente clientePorId= clienteservicio.obtenerPorId(id);
 		return ResponseEntity.ok(clientePorId);
 	}
 	@PutMapping("/cliente/{id}")
-	public ResponseEntity<Cliente> actualizar(@PathVariable long id, @RequestBody Cliente cliente){
+	public ResponseEntity<Cliente> actualizar(@PathVariable long id, @RequestBody Cliente cliente) throws Exception{
 		Cliente clientePorId = clienteservicio.obtenerPorId(id);
 		clientePorId.setNombre(cliente.getNombre());
 		clientePorId.setApellido(cliente.getApellido());
@@ -51,7 +51,7 @@ public class ClienteControlador {
 		return new ResponseEntity<>(cliente_actualizado, HttpStatus.CREATED);
 	}
 	@DeleteMapping("/cliente/{id}")
-	public ResponseEntity <HashMap<String, Boolean>>eliminarCliente(@PathVariable long id){
+	public ResponseEntity <HashMap<String, Boolean>>eliminarCliente(@PathVariable long id) throws Exception{
 	this.clienteservicio.eliminar(id);
 	
 	HashMap<String,Boolean> estadoClienteEliminado = new HashMap<>();

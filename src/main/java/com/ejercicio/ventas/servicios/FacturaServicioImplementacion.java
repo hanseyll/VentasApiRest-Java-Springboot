@@ -14,26 +14,42 @@ public class FacturaServicioImplementacion implements IFacturaServicio {
 
 	@Autowired
 	FacturaRepositorio facturarepositorio;
-	
+
 	@Override
-	public List<Factura> obtenerTodo() {
-		return facturarepositorio.findAll();
+	public List<Factura> obtenerTodo() throws Exception {
+		try {
+			return facturarepositorio.findAll();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@Override
-	public Factura guardar(Factura factura) {
-		return facturarepositorio.save(factura);
+	public Factura guardar(Factura factura) throws Exception {
+		try {
+			return facturarepositorio.save(factura);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@Override
-	public Factura obtenerPorId(long id) {
-		return facturarepositorio.findById(id).orElse(null);
+	public Factura obtenerPorId(long id) throws Exception {
+		try {
+			return facturarepositorio.findById(id).orElse(null);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@Override
-	public void eliminar(long id) {
-		facturarepositorio.deleteById(id);
-		
+	public void eliminar(long id) throws Exception {
+		try {
+			facturarepositorio.deleteById(id);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+
 	}
 
 	@Override
@@ -41,7 +57,7 @@ public class FacturaServicioImplementacion implements IFacturaServicio {
 		try {
 			List<Factura> facturas = facturarepositorio.searchNativo(id);
 			return facturas;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
 	}

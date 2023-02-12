@@ -6,17 +6,17 @@ import jakarta.persistence.*;
 
 @Entity
 public class Factura {
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long num_factura;
 	@ManyToOne
-	@JoinColumn(name="id_cliente")
+	@JoinColumn(name = "id_cliente")
 	private Cliente id_cliente;
+	@Column(name = "fecha")
 	private String fecha;
-	
-	public Factura(){
-		
+
+	public Factura() {
+
 	}
 
 	public Long getNum_factura() {
@@ -41,10 +41,6 @@ public class Factura {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

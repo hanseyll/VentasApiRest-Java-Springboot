@@ -7,9 +7,9 @@ import com.ejercicio.ventas.modelos.Factura;
 
 public interface IClienteServicio {
 	
-	public List<Cliente> obtenerTodo();
-	public Cliente guardar(Cliente cliente);
-	public Cliente obtenerPorId(long id);
-	public void eliminar(long id);
+	public List<Cliente> obtenerTodo() throws Exception;
+	public Cliente guardar(Cliente cliente) throws Exception;
+	public Cliente obtenerPorId(long id) throws Exception;
+	public void eliminar(long id) throws Exception;
 
 }

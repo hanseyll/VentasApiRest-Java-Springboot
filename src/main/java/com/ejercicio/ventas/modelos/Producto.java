@@ -5,30 +5,28 @@ import java.io.Serializable;
 import jakarta.persistence.*;
 
 @Entity
-public class Producto implements Serializable{
-	
+public class Producto implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_producto;
-	
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "precio")
 	private int precio;
+	@Column(name = "stock")
 	private int stock;
 
-	public Producto(){
+	public Producto() {
 	}
-
 
 	public Long getId_producto() {
 		return id_producto;
 	}
 
-
 	public void setId_producto(Long id_producto) {
 		this.id_producto = id_producto;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
@@ -54,5 +52,4 @@ public class Producto implements Serializable{
 		this.stock = stock;
 	}
 
-	
 }
