@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ejercicio.ventas.modelos.Detalle;
+import com.ejercicio.ventas.modelos.Factura;
 import com.ejercicio.ventas.servicios.DetalleServicioImplementacion;
 
 @RestController
@@ -42,6 +44,13 @@ public class DetalleControlador {
 		Detalle detallePorId = detalleservicio.obtenerPorId(id);
 		return ResponseEntity.ok(detallePorId);
 	}
+	
+	@GetMapping("/searchDetalle")
+	public ResponseEntity<?> search(@RequestParam long id) throws Exception{
+		      List <Detalle> detallePorClienteId= detalleservicio.search(id);
+			return new ResponseEntity<>(detallePorClienteId,HttpStatus.FOUND);
+	}
+	
 	
 	@PutMapping("/detalle/{id}")
 	public ResponseEntity<Detalle> actualizarPorId(@PathVariable long id, @RequestBody Detalle detalle){

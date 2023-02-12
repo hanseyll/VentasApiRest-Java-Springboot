@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ejercicio.ventas.modelos.Detalle;
+import com.ejercicio.ventas.modelos.Factura;
 import com.ejercicio.ventas.repositorios.DetalleRepositorio;
 
 @Service
@@ -32,6 +33,16 @@ public class DetalleServicioImplementacion implements IDetalleServicio{
 	@Override
 	public void eliminar(long id) {
 		detallerepositorio.deleteById(id);
+	}
+
+	@Override
+	public List<Detalle> search(long id) throws Exception {
+		try {
+			List<Detalle> detalles = detallerepositorio.searchNativo(id);
+			return detalles;
+		} catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 }

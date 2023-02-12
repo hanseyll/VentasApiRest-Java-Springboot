@@ -9,4 +9,5 @@ public interface IFacturaServicio {
 	public Factura guardar(Factura factura);
 	public Factura obtenerPorId(long id);
 	public void eliminar(long id);
+	public List<Factura> search(long id) throws Exception;
 }

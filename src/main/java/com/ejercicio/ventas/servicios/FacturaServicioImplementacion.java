@@ -14,8 +14,6 @@ public class FacturaServicioImplementacion implements IFacturaServicio {
 
 	@Autowired
 	FacturaRepositorio facturarepositorio;
-	@Autowired
-	ClienteRepositorio clienterepositorio;
 	
 	@Override
 	public List<Factura> obtenerTodo() {
@@ -36,6 +34,16 @@ public class FacturaServicioImplementacion implements IFacturaServicio {
 	public void eliminar(long id) {
 		facturarepositorio.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Factura> search(long id) throws Exception {
+		try {
+			List<Factura> facturas = facturarepositorio.searchNativo(id);
+			return facturas;
+		} catch(Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 }

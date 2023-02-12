@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ejercicio.ventas.modelos.Factura;
@@ -37,8 +38,19 @@ public class FacturaControlador {
 	@GetMapping("/factura/{id}")
 	public ResponseEntity<Factura> obtenerFacturaId(@PathVariable long id){
 		Factura facturaPorId= facturaservicio.obtenerPorId(id);
+		System.out.print(facturaPorId);
 		return ResponseEntity.ok(facturaPorId);
 	}
+	
+	@GetMapping("/search")
+	public ResponseEntity<?> search(@RequestParam long id) throws Exception{
+		System.out.println("empieza");
+		       System.out.println(facturaservicio.search(id));
+		       System.out.println("acaba");
+		      List <Factura> facturaPorClienteId= facturaservicio.search(id);
+			return new ResponseEntity<>(facturaPorClienteId,HttpStatus.FOUND);
+	}
+	
 	@PutMapping("/factura/{id}")
 	public ResponseEntity<Factura> actualizar(@PathVariable long id, @RequestBody Factura factura){
 		Factura facturaPorId = facturaservicio.obtenerPorId(id);
