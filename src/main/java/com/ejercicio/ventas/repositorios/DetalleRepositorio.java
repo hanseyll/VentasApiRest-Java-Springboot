@@ -13,5 +13,4 @@ import com.ejercicio.ventas.modelos.Detalle;
 public interface DetalleRepositorio extends JpaRepository<Detalle, Long> {
 	@Query(value = "SELECT * FROM detalle WHERE detalle.num_factura LIKE %:id%", nativeQuery = true)
 	List<Detalle> searchNativo(@Param("id") long id);
-
 }
